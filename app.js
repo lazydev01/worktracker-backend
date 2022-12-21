@@ -69,7 +69,10 @@ app.post('/register', (req, res)=>{
 });
 
 app.get('/users', async(req, res)=> {
-    await User.find().then((users)=> res.send(users)).catch((err)=> console.log(err));
+    await User.find().then((users)=> {
+        console.log(users);
+        res.send(users)
+    }).catch((err)=> console.log(err));
 })
 
 app.get('/users/:userId', (req, res)=> {
