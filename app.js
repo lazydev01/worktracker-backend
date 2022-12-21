@@ -68,8 +68,8 @@ app.post('/register', (req, res)=>{
     new User({name : req.body.name, email : req.body.email, req, password : req.body.password}).save().then((user)=>res.send(user)).catch((err)=> console.log(err));
 });
 
-app.get('/users', (req, res)=> {
-    User.find().then((users)=> res.send(users)).catch((err)=> console.log(err));
+app.get('/users', async(req, res)=> {
+    await User.find().then((users)=> res.send(users)).catch((err)=> console.log(err));
 })
 
 app.get('/users/:userId', (req, res)=> {
